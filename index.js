@@ -32,7 +32,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 app.get('/api/protected', jwtAuth, (req, res) => {
       // console.log(data);
-      res.json('hey')
+      res.json({data: 'hey'})
   });
 
 app.use(
