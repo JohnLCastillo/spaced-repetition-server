@@ -11,8 +11,13 @@ const {PORT, CLIENT_ORIGIN} = require('./config');
 const {dbConnect} = require('./db-mongoose');
 // const {dbConnect} = require('./db-knex');
 mongoose.Promise = global.Promise;
-
 const app = express();
+
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
 app.use(morgan('common'));
 
@@ -25,13 +30,10 @@ app.use('/api/auth/', authRouter);
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//     .then(data => {
-//       // console.log(data);
-//       res.json({
-//       stats: data.leagueDashPlayerStats
-//     })});
-//   });
+app.get('/api/protected', jwtAuth, (req, res) => {
+      // console.log(data);
+      res.json('hey')
+  });
 
 app.use(
     morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
@@ -39,11 +41,6 @@ app.use(
     })
 );
 
-app.use(
-    cors({
-        origin: CLIENT_ORIGIN
-    })
-);
 
 app.use('*', (req, res) => {
     return res.status(404).json({ message: 'Not Found' });
