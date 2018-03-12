@@ -1,65 +1,63 @@
-'use strict';
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const passport = require('passport');
-const mongoose = require('mongoose');
-const { router: usersRouter } = require('./users');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-const {PORT, CLIENT_ORIGIN} = require('./config');
-const {dbConnect} = require('./db-mongoose');
+"use strict";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const passport = require("passport");
+const mongoose = require("mongoose");
+const { router: usersRouter } = require("./users");
+const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
+const { PORT, CLIENT_ORIGIN } = require("./config");
+const { dbConnect } = require("./db-mongoose");
 // const {dbConnect} = require('./db-knex');
 mongoose.Promise = global.Promise;
 const app = express();
 
 app.use(
-    cors({
-        origin: CLIENT_ORIGIN
-    })
+  cors({
+    origin: CLIENT_ORIGIN
+  })
 );
 
-app.use(morgan('common'));
+app.use(morgan("common"));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/api/users/', usersRouter);
-app.use('/api/auth/', authRouter);
+app.use("/api/users/", usersRouter);
+app.use("/api/auth/", authRouter);
 
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const jwtAuth = passport.authenticate("jwt", { session: false });
 
-
-app.get('/api/protected', jwtAuth, (req, res) => {
-      // console.log(data);
-      res.json({data: 'hey'})
-  });
+app.get("/api/protected", jwtAuth, (req, res) => {
+  // console.log(data);
+  res.json({ data: "hey" });
+});
 
 app.use(
-    morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
-        skip: (req, res) => process.env.NODE_ENV === 'test'
-    })
+  morgan(process.env.NODE_ENV === "production" ? "common" : "dev", {
+    skip: (req, res) => process.env.NODE_ENV === "test"
+  })
 );
 
-
-app.use('*', (req, res) => {
-    return res.status(404).json({ message: 'Not Found' });
-  });
+app.use("*", (req, res) => {
+  return res.status(404).json({ message: "Not Found" });
+});
 
 function runServer(port = PORT) {
-    const server = app
-        .listen(port, () => {
-            console.info(`App listening on port ${server.address().port}`);
-        })
-        .on('error', err => {
-            console.error('Express failed to start');
-            console.error(err);
-        });
+  const server = app
+    .listen(port, () => {
+      console.info(`App listening on port ${server.address().port}`);
+    })
+    .on("error", err => {
+      console.error("Express failed to start");
+      console.error(err);
+    });
 }
 
 if (require.main === module) {
-    dbConnect();
-    runServer();
+  dbConnect();
+  runServer();
 }
 
-module.exports = {app};
+module.exports = { app };
