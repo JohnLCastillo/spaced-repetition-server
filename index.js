@@ -25,14 +25,13 @@ app.use('/api/auth/', authRouter);
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
-app.get('/api/protected', jwtAuth, (req, res) => {
-    NBA.stats.playerStats({Rank: "N"})
-    .then(data => {
-      // console.log(data);
-      res.json({
-      stats: data.leagueDashPlayerStats
-    })});
-  });
+// app.get('/api/protected', jwtAuth, (req, res) => {
+//     .then(data => {
+//       // console.log(data);
+//       res.json({
+//       stats: data.leagueDashPlayerStats
+//     })});
+//   });
 
 app.use(
     morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
