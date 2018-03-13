@@ -116,18 +116,18 @@ function main(cause) {
 //   console.log(allQuestions)
    allQuestions.forEach(item => {
       questions.insertFirst(item)
-      console.log(item);
+    //   console.log(item);
   })
 //   console.log(display(questions))
-  if (cause === true) {
-    questions.insertLast(question);
-    return questions.head;
-  } else if (cause === "new") {
-    return questions.head;
-  } else {
-    questions.insertAt(question, 6);
-    return questions.head;
-  }
+//   if (cause === true) {
+//     questions.insertLast(question);
+//     return questions.head;
+//   } else if (cause === "new") {
+//     return questions.head;
+//   } else {
+//     questions.insertAt(question, 6);
+//     return questions.head;
+//   }
 }
 
 main('k')
