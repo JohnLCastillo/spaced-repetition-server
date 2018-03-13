@@ -1,5 +1,3 @@
-
-
 class _Node {
     constructor(value, next) {
         this.value=value,
@@ -109,6 +107,14 @@ class LinkedList {
     }
 }
 
-function main(){
+function main(question){
     let questions = new LinkedList();
+    if(res.head === true){
+        insertLast(question);
+    };
+    if(res.head === false){
+        insertAt(question,6);
+    }
 }
+
+module.exports = main;

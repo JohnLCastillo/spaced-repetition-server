@@ -17,7 +17,7 @@ router.get('/',jsonParser,(req,res) => {
 
 router.get('/:userid',jsonParser,(req,res) => {
     // let head = array.shift();
-    Question
+    // res.json(head);
 })
 //shift
 
