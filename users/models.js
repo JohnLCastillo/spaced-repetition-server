@@ -14,10 +14,10 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   firstName: {type: String, default: ''},
-  lastName: {type: String, default: ''}
+  lastName: {type: String, default: ''} ,
   // prevQuestions: {type: Array},
-  // // currentQuestion: {type: String},
-  // score: {type: Number}
+  currentQuestion: {type: String}
+  // core: {type: Number}
 });
 
 UserSchema.methods.serialize = function() {
@@ -25,10 +25,10 @@ UserSchema.methods.serialize = function() {
     username: this.username || '',
     firstName: this.firstName || '',
     lastName: this.lastName || '',
-    id: this._id
+    id: this._id ,
     // prevQuestions: this.prevQuestions,
     // score: this.score
-    // currentQuestion: this.queue.head
+    currentQuestion: this.currentQuestion
   };
 };
 
