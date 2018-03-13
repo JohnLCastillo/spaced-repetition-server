@@ -57,3 +57,5 @@ const allQuestions = [
 // };
 
 // pushQuestions(allQuestions);
+
+module.exports = {allQuestions};
