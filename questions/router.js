@@ -6,12 +6,11 @@ const {Question} = require('./models');
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
-console.log(Question)
 
 router.get('/',jsonParser,(req,res) => {
     Question
     .find({})
-    .then(data => res.json(data))
+    .then(data => console.log(data))
     .catch(err => console.log(err))
 });
 
