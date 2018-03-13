@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const { router: usersRouter } = require("./users");
+const { router: questionsRouter } = require("./questions");
 const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
 const { PORT, CLIENT_ORIGIN } = require("./config");
 const { dbConnect } = require("./db-mongoose");
@@ -26,6 +27,7 @@ passport.use(jwtStrategy);
 
 app.use("/api/users/", usersRouter);
 app.use("/api/auth/", authRouter);
+app.use('/api/questions/',questionRouter)
 
 const jwtAuth = passport.authenticate("jwt", { session: false });
 

@@ -3,19 +3,18 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const questionSchema = mongoose.Schema({
-  prevQuestions: {type: Array},
-  currentQuestion: {type: String},
-  score: {type: Number}
+    question: {type: String, required: true},
+    answer: {type: String, required: true}
 });
+
 
 questionSchema.methods.serialize = function() {
   return {
-    prevQuestions: this.prevQuestions,
-    score: this.score,
-    currentQuestion: this.currentQuestion
+   question: this.question,
+   answer: this.answer
   };
 };
 
-const Question = mongoose.model('question', questionSchema);
+const Question = mongoose.model('Question', questionSchema);
 
 module.exports = {Question};

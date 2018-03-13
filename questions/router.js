@@ -7,10 +7,13 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
-router.get('/:userid/favorites', jsonParser, (req,res) => {
+router.get('/',jsonParser,(req,res) => {
     Question
-  .then(() => console.log('It worked!'))
-  .catch(err => res.status(500).json({message: 'Internal server error'}));
+    .find({})
+    .then(data => res.json(data))
+    .catch(err => console.log(err))
 });
+//shift
 
+//router.post(answer)
 module.exports = {router};
