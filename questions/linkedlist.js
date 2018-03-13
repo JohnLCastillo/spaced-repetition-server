@@ -107,14 +107,22 @@ class LinkedList {
     }
 }
 
-function main(question){
+function main(){
     let questions = new LinkedList();
-    if(res.head === true){
-        insertLast(question);
-    };
-    if(res.head === false){
-        insertAt(question,6);
-    }
+    // if(res.head === true){
+    //     insertLast(question);
+    // };
+    // if(res.head === false){
+    //     insertAt(question,6);
+    // }
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
+    // questions.insertFirst();
 }
 
-module.exports = main;
+module.exports = {main};
