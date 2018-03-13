@@ -51,7 +51,7 @@ const allQuestions = [
 
 function pushQuestions(arr){
     arr.map(obj => {
-        console.log(obj.word)
+        // console.log(obj.word)
         Question
         .create({
             question: obj.word,
