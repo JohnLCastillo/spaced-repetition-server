@@ -133,26 +133,26 @@ router.post("/", jsonParser, (req, res) => {
 });
 
 //each user needs own currentQ which is the head 
-router.get('/:userid/current',jsonParser,(req,res) => {
+router.get('/:id/current',jsonParser,(req,res) => {
   User
   .findById(req.params.id)
   .then(data => res.json(data.currentQuestion.head))
   .catch(err => console.log(err))
 })
 
-router.post("/:userid", jsonParser, (req, res) => {
+router.post("/:id", jsonParser, (req, res) => {
   let current = null;
   User
   .findById(req.params.id)
   .then(res => {
     current = res.currentQuestion;
   })
-  if (req.body === "true") {
+  if (req.body.isCorrect === "true") {
     User.findIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
       .then(data => res.json(data))
       .catch(err => res.status(500).json({ message: "Internal server error" }));
   }
-  if (req.body === "false") {
+  if (req.body.isCorrect === "false") {
     User.findIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
       .then(data => res.json(data))
       .catch(err => res.status(500).json({ message: "Internal server error" }));
