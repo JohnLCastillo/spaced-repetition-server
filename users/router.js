@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { User } = require("./models");
-const main = require("../questions/linkedlist");
+const {main, getHead} = require("../questions/linkedlist");
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
@@ -115,7 +115,8 @@ router.post("/", jsonParser, (req, res) => {
         username,
         password: hash,
         firstName,
-        lastName
+        lastName,
+        currentQuestion: getHead()
       });
     })
     .then(user => {

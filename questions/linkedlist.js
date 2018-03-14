@@ -1,5 +1,5 @@
-const {Question} = require("./models");
-const {allQuestions} = require("./questions");
+const { Question } = require("./models");
+const { allQuestions } = require("./questions");
 
 class _Node {
   constructor(value, next) {
@@ -111,35 +111,42 @@ class LinkedList {
   }
 }
 
-function main(cause) {
+function main() {
   let questions = new LinkedList();
-//   console.log(allQuestions)
-   allQuestions.forEach(item => {
-      questions.insertFirst(item)
-    //   console.log(item);
-  })
-//   console.log(display(questions))
-//   if (cause === true) {
-//     questions.insertLast(question);
-//     return questions.head;
-//   } else if (cause === "new") {
-//     return questions.head;
-//   } else {
-//     questions.insertAt(question, 6);
-//     return questions.head;
-//   }
+  console.log(questions.head);
+  allQuestions.forEach(item => {
+    questions.insertFirst(item);
+  });
 }
 
-main('k')
+main("k");
 
-function display(sll){
-    // console.log(sll.head)
-    let currNode = sll.head; 
-    console.log(sll.head)
-    while (currNode.next !== null) { 
-        console.log(currNode.next); 
-        currNode = currNode.next; 
-    }
+function getHead() {
+  return questions.head;
 }
 
-module.exports = { main };
+function answers(boolean) {
+  if (boolean === true) {
+    questions.insertLast(questions.head);
+    questions.head = questions.head.next;
+    return questions.head;
+  } else if (boolean === false) {
+    questions.insertAt(questions.head, 6);
+    questions.head = questions.head.next;
+    return questions.head;
+  } else {
+    return "error. invalid input";
+  }
+}
+
+function display(sll) {
+  // console.log(sll.head)
+  let currNode = sll.head;
+  console.log(sll.head);
+  while (currNode.next !== null) {
+    console.log(currNode.next);
+    currNode = currNode.next;
+  }
+}
+
+(module.exports = main), getHead;
