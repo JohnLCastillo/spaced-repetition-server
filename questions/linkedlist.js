@@ -130,26 +130,28 @@ function answers(boolean,current) {
   // console.log('hjsdfohdsjfosd',current.head.next)
   if (boolean === true) {
       let temp = current.head;
-      while (temp.next !== null) {
+      while (temp.next) {
         temp = temp.next;
       }
-      temp.next = current.head;
-      current.head = current.head.next;
-      return current;
-  } else if (boolean === false) {
-    let temp = current.head;
-    let count = 1;
-    while (temp.next !== null) {
-      count++;
-      if (count === 6) {
-        return (temp.next = current.head);
-      }
-      temp = temp.next;
-    }
-    current.head = current.head.next;
-    return current;
-  } else {
-    return "error. invalid input";
+      // console.log('temp:',temp)
+      console.log('current:',current.head)
+      // temp.next = current.head;
+      // current.head = current.head.next;
+      return current
+  // } else if (boolean === false) {
+  //   let temp = current.head;
+  //   let count = 1;
+  //   while (temp.next !== null) {
+  //     count++;
+  //     if (count === 6) {
+  //       return (temp.next = current.head);
+  //     }
+  //     temp = temp.next;
+  //   }
+  //   current.head = current.head.next;
+  //   return current;
+  // } else {
+  //   return "error. invalid input";
   }
 }
 
