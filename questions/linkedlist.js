@@ -127,12 +127,25 @@ function getHead() {
 }
 
 function answers(boolean,current) {
+  // console.log('hjsdfohdsjfosd',current.head.next)
   if (boolean === true) {
-    current.insertLast(current.head);
-    current.head = current.head.next;
-    return current;
+      let temp = current.head;
+      while (temp.next !== null) {
+        temp = temp.next;
+      }
+      temp.next = current.head;
+      current.head = current.head.next;
+      return current;
   } else if (boolean === false) {
-    current.insertAt(current.head, 6);
+    let temp = current.head;
+    let count = 1;
+    while (temp.next !== null) {
+      count++;
+      if (count === 6) {
+        return (temp.next = current.head);
+      }
+      temp = temp.next;
+    }
     current.head = current.head.next;
     return current;
   } else {

@@ -141,22 +141,23 @@ router.get('/:id/current',jsonParser,(req,res) => {
 })
 
 router.post("/:id", jsonParser, (req, res) => {
-  let current = null;
   User
   .findById(req.params.id)
   .then(res => {
-    current = res.currentQuestion;
+    let current = res.currentQuestion;
+    // console.log('hey i am current!',current)
+    if (req.body.isCorrect === "true") {
+      return User.findIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
+    }
+    if (req.body.isCorrect === "false") {
+      return User.findIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
+    }
   })
-  if (req.body.isCorrect === "true") {
-    User.findIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
-      .then(data => res.json(data))
-      .catch(err => res.status(500).json({ message: "Internal server error" }));
-  }
-  if (req.body.isCorrect === "false") {
-    User.findIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
-      .then(data => res.json(data))
-      .catch(err => res.status(500).json({ message: "Internal server error" }));
-  }
+  .then(data => res.json(data))
+  .catch(err => {
+    console.log('here i am!!',err);
+    res.status(500).json({ message: "Internal server error" });
+  });
 });
 
 module.exports = { router };
