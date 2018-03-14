@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { User } = require("./models");
-const {main, getHead} = require("../questions/linkedlist");
+const {main, getHead, answers} = require("../questions/linkedlist");
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
@@ -116,7 +116,7 @@ router.post("/", jsonParser, (req, res) => {
         password: hash,
         firstName,
         lastName,
-        currentQuestion: getHead()
+        currentQuestion: main()
       });
     })
     .then(user => {
@@ -136,19 +136,25 @@ router.post("/", jsonParser, (req, res) => {
 router.get('/:userid/current',jsonParser,(req,res) => {
   User
   .findById(req.params.id)
-  .then(data => res.json(data.currentQuestion))
+  .then(data => res.json(data.currentQuestion.head))
   .catch(err => console.log(err))
 })
 
 router.post("/:userid", jsonParser, (req, res) => {
+  let current = null;
+  User
+  .findById(req.params.id)
+  .then(res => {
+    current = res.currentQuestion;
+  })
   if (req.body === "true") {
-    User.findIdAndUpdate(req.params.id, { currentQuestion: main(true) })
-      .then(data => console.log(data))
+    User.findIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
+      .then(data => res.json(data))
       .catch(err => res.status(500).json({ message: "Internal server error" }));
   }
   if (req.body === "false") {
-    User.findIdAndUpdate(req.params.id, { currentQuestion: main(false) })
-      .then(data => console.log(data))
+    User.findIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
+      .then(data => res.json(data))
       .catch(err => res.status(500).json({ message: "Internal server error" }));
   }
 });

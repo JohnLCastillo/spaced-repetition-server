@@ -15,9 +15,7 @@ const UserSchema = mongoose.Schema({
   },
   firstName: {type: String, default: ''},
   lastName: {type: String, default: ''} ,
-  // prevQuestions: {type: Array},
-  currentQuestion: {type: String}
-  // core: {type: Number}
+  currentQuestion: {type: Object, required: true}
 });
 
 UserSchema.methods.serialize = function() {
@@ -26,8 +24,6 @@ UserSchema.methods.serialize = function() {
     firstName: this.firstName || '',
     lastName: this.lastName || '',
     id: this._id ,
-    // prevQuestions: this.prevQuestions,
-    // score: this.score
     currentQuestion: this.currentQuestion
   };
 };

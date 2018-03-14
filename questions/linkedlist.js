@@ -113,27 +113,28 @@ class LinkedList {
 
 function main() {
   let questions = new LinkedList();
-  console.log(questions.head);
   allQuestions.forEach(item => {
     questions.insertFirst(item);
   });
+  return questions;
 }
 
-main("k");
+// main("k");
 
 function getHead() {
+  console.log(questions.head)
   return questions.head;
 }
 
-function answers(boolean) {
+function answers(boolean,current) {
   if (boolean === true) {
-    questions.insertLast(questions.head);
-    questions.head = questions.head.next;
-    return questions.head;
+    current.insertLast(current.head);
+    current.head = current.head.next;
+    return current;
   } else if (boolean === false) {
-    questions.insertAt(questions.head, 6);
-    questions.head = questions.head.next;
-    return questions.head;
+    current.insertAt(current.head, 6);
+    current.head = current.head.next;
+    return current;
   } else {
     return "error. invalid input";
   }
@@ -149,4 +150,4 @@ function display(sll) {
   }
 }
 
-(module.exports = main), getHead;
+module.exports = {main, getHead, answers};
