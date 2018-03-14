@@ -147,10 +147,10 @@ router.post("/:id", jsonParser, (req, res) => {
     let current = res.currentQuestion;
     // console.log('hey i am current!',current)
     if (req.body.isCorrect === "true") {
-      return User.findIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
+      return User.findByIdAndUpdate(req.params.id, { currentQuestion: answers(true,current) })
     }
     if (req.body.isCorrect === "false") {
-      return User.findIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
+      return User.findByIdAndUpdate(req.params.id, { currentQuestion: answers(false,current) })
     }
   })
   .then(data => res.json(data))
