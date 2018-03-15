@@ -122,36 +122,36 @@ function main() {
 // main("k");
 
 function getHead() {
-  console.log(questions.head)
+  console.log(questions.head);
   return questions.head;
 }
 
-function answers(boolean,current) {
-  // console.log('hjsdfohdsjfosd',current.head.next)
+function answers(boolean, current) {
+  let headValue = current.head.value;
   if (boolean === true) {
-      let temp = current.head;
-      while (temp.next) {
-        temp = temp.next;
+    let temp = current.head;
+    while (temp.next !== null) {
+      temp.value = temp.next.value;
+      temp = temp.next;
+    }
+    temp.value = headValue;
+    return current;
+  } else if (boolean === false) {
+    let temp = current.head;
+    let count = 1;
+    while (temp.next !== null) {
+      count++;
+      console.log('temp value:',temp.value);
+      if (count === 6) {
+         temp.value = headValue;
+         return current;
       }
-      // console.log('temp:',temp)
-      console.log('current:',current.head)
-      // temp.next = current.head;
-      // current.head = current.head.next;
-      return current
-  // } else if (boolean === false) {
-  //   let temp = current.head;
-  //   let count = 1;
-  //   while (temp.next !== null) {
-  //     count++;
-  //     if (count === 6) {
-  //       return (temp.next = current.head);
-  //     }
-  //     temp = temp.next;
-  //   }
-  //   current.head = current.head.next;
-  //   return current;
-  // } else {
-  //   return "error. invalid input";
+      temp.value = temp.next.value;
+      temp = temp.next;
+    }
+    return current;
+  } else {
+    return "error. invalid input";
   }
 }
 
@@ -165,4 +165,4 @@ function display(sll) {
   }
 }
 
-module.exports = {main, getHead, answers};
+module.exports = { main, getHead, answers };
