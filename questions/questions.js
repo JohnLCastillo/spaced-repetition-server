@@ -6,68 +6,68 @@ const allQuestions = [
     {
         "question": "Luz",
         "answer": "light",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Hola",
         "answer": "hello",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Vaso",
         "answer": "cup",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Amigo",
         "answer": "friend",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Perro",
         "answer": "dog",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Pero",
         "answer": "but",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Boda",
         "answer": "wedding",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Regalo",
         "answer": "gift",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Correr",
         "answer": "run",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Diccionario",
         "answer": "dictionary",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     },
     {
         "question": "Estadio",
         "answer": "stadium",
-        "score": "",
-        "attempted": ""
+        "score": 0,
+        "attempted": 0
     }
 ]
 
