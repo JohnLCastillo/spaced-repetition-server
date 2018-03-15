@@ -130,6 +130,8 @@ function answers(boolean, current) {
   let headValue = current.head.value;
   if (boolean === true) {
     let temp = current.head;
+    current.head.value.score++;
+    current.head.value.attempted++;
     while (temp.next !== null) {
       temp.value = temp.next.value;
       temp = temp.next;
@@ -138,6 +140,7 @@ function answers(boolean, current) {
     return current;
   } else if (boolean === false) {
     let temp = current.head;
+    current.head.value.attempted++
     let count = 1;
     while (temp.next !== null) {
       count++;

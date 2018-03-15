@@ -5,47 +5,69 @@
 const allQuestions = [
     {
         "question": "Luz",
-        "answer": "light"
+        "answer": "light",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Hola",
-        "answer": "hello"
+        "answer": "hello",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Vaso",
-        "answer": "cup"
+        "answer": "cup",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Amigo",
-        "answer": "friend"
+        "answer": "friend",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Perro",
-        "answer": "dog"
+        "answer": "dog",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Pero",
-        "answer": "but"
+        "answer": "but",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Boda",
-        "answer": "wedding"
+        "answer": "wedding",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Regalo",
-        "answer": "gift"
+        "answer": "gift",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Correr",
-        "answer": "run"
+        "answer": "run",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Diccionario",
-        "answer": "dictionary"
+        "answer": "dictionary",
+        "score": "",
+        "attempted": ""
     },
     {
         "question": "Estadio",
-        "answer": "stadium"
+        "answer": "stadium",
+        "score": "",
+        "attempted": ""
     }
 ]
 
